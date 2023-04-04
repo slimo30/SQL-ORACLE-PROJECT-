@@ -52,7 +52,7 @@ CREATE TABLE Installer
     nLog INT ,
     numIns INT,
     dateIns DATE DEFAULT CURRENT_TIMESTAMP,
-    delai VARCHAR2(80),--INTERVAL YEAR TO MONTH,
+    delai INTERVAL YEAR(4) TO MONTH, --VARCHAR2(80),--INTERVAL YEAR TO MONTH,
     CONSTRAINT PK_Installer PRIMARY KEY (nPoste,nLog)
 );
 
@@ -159,11 +159,13 @@ REFERENCES Logiciel (nLog);
 
 
 
-UPDATE Installer
-SET delai =
-  TRUNC(MONTHS_BETWEEN(Installer.dateIns, (SELECT dateAch FROM Logiciel WHERE Logiciel.nLog = Installer.nLog)) / 12) || ' years, ' ||
-  TRUNC(MOD(MONTHS_BETWEEN(Installer.dateIns, (SELECT dateAch FROM Logiciel WHERE Logiciel.nLog = Installer.nLog)), 12)) || ' months, ' ||
-  TRUNC((Installer.dateIns - (SELECT dateAch FROM Logiciel WHERE Logiciel.nLog = Installer.nLog)) -
-  (TRUNC(MONTHS_BETWEEN(Installer.dateIns, (SELECT dateAch FROM Logiciel WHERE Logiciel.nLog = Installer.nLog)) / 12) * 365) -
-  (MOD(MONTHS_BETWEEN(Installer.dateIns, (SELECT dateAch FROM Logiciel WHERE Logiciel.nLog = Installer.nLog)), 12) * 30)) || ' days';
+-- UPDATE Installer
+-- SET delai1 =
+--   TRUNC(MONTHS_BETWEEN(Installer.dateIns, (SELECT dateAch FROM Logiciel WHERE Logiciel.nLog = Installer.nLog)) / 12) || ' years, ' ||
+--   TRUNC(MOD(MONTHS_BETWEEN(Installer.dateIns, (SELECT dateAch FROM Logiciel WHERE Logiciel.nLog = Installer.nLog)), 12)) || ' months, ' ||
+--   TRUNC((Installer.dateIns - (SELECT dateAch FROM Logiciel WHERE Logiciel.nLog = Installer.nLog)) -
+--   (TRUNC(MONTHS_BETWEEN(Installer.dateIns, (SELECT dateAch FROM Logiciel WHERE Logiciel.nLog = Installer.nLog)) / 12) * 365) -
+--   (MOD(MONTHS_BETWEEN(Installer.dateIns, (SELECT dateAch FROM Logiciel WHERE Logiciel.nLog = Installer.nLog)), 12) * 30)) || ' days';
 
+UPDATE Installer
+SET delai = NUMTOYMINTERVAL(MONTHS_BETWEEN(Installer.dateIns, (SELECT dateAch FROM Logiciel WHERE Logiciel.nLog = Installer.nLog)), 'MONTH');
