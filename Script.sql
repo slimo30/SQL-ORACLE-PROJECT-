@@ -15,6 +15,10 @@ CREATE TABLE Segment
     CONSTRAINT PK_Segment PRIMARY KEY (aIP)
 );
 
+
+
+
+
 CREATE TABLE Salle
 (
     nSalle INT ,
