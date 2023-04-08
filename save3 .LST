@@ -1,0 +1,151 @@
+SQL> SELECT * FROM  Segment;
+
+AIP                  NOMSEGEMENT               ETAGE                            
+-------------------- -------------------- ----------                            
+130.120.80           Brain                         0                            
+130.120.81           Brain 1                       1                            
+130.120.82           Brain 2                       2                            
+
+SQL> SELECT * FROM  Salle;
+
+    NSALLE NOMSALLE                NBPOSTE AIP                                  
+---------- -------------------- ---------- --------------------                 
+         1 Salle 1                       3 130.120.80                           
+         2 Salle 2                       2 130.120.80                           
+         3 Salle 3                       2 130.120.80                           
+        11 Salle 11                      2 130.120.81                           
+        21 Salle 21                      2 130.120.82                           
+        22 Salle 22                      0 130.120.83                           
+        23 Salle 23                      0 130.120.83                           
+
+7 rows selected.
+
+SQL> SELECT * FROM  Poste;
+
+    NPOSTE NOMPOSTE             AIP                          AD                 
+---------- -------------------- -------------------- ----------                 
+TYPEPOSTE                NSALLE                                                 
+-------------------- ----------                                                 
+         1 Poste 1              130.120.80                    1                 
+TX                            1                                                 
+                                                                                
+         2 Poste 2              130.120.80                    2                 
+UNIX                          1                                                 
+                                                                                
+         3 Poste 3              130.120.80                    3                 
+TX                            1                                                 
+                                                                                
+
+    NPOSTE NOMPOSTE             AIP                          AD                 
+---------- -------------------- -------------------- ----------                 
+TYPEPOSTE                NSALLE                                                 
+-------------------- ----------                                                 
+         6 Poste 6              130.120.80                    6                 
+UNIX                          3                                                 
+                                                                                
+         7 Poste 7              130.120.80                    7                 
+TX                            3                                                 
+                                                                                
+         8 Poste 8              130.120.81                    1                 
+UNIX                         11                                                 
+                                                                                
+
+    NPOSTE NOMPOSTE             AIP                          AD                 
+---------- -------------------- -------------------- ----------                 
+TYPEPOSTE                NSALLE                                                 
+-------------------- ----------                                                 
+         9 Poste 9              130.120.81                    2                 
+TX                           11                                                 
+                                                                                
+        10 Poste 10             130.120.81                    3                 
+UNIX                         12                                                 
+                                                                                
+        11 Poste 11             130.120.82                    1                 
+PCNT                         21                                                 
+                                                                                
+
+9 rows selected.
+
+SQL> SELECT * FROM  Logiciel;
+
+      NLOG NOMLOG               DATEACH   VERSI TYPELOG          PRIX           
+---------- -------------------- --------- ----- ---------- ----------           
+         1 Oracle 6             13-MAY-95 6.2   UNIX             3000           
+         2 Oracle 8             15-SEP-99 8i    UNIX             5600           
+         3 SQL Server           12-APR-98 7     PCNT             2700           
+         4 Front Page           03-JUN-97 5     PCWS              500           
+         5 WinDev               12-MAY-97 5     PCWS              750           
+         6 SQL*Net                        2.0   UNIX              500           
+         7 I.I.S                12-APR-02 2     PCNT              810           
+         8 DreamWeaver          21-SEP-03 2.0   BeOS             1400           
+
+8 rows selected.
+
+SQL> SELECT * FROM  Installer;
+
+    NPOSTE       NLOG     NUMINS DATEINS                                        
+---------- ---------- ---------- ---------                                      
+DELAI                                                                           
+---------------------------------------------------------------------------     
+         2          1          1 15-MAY-03                                      
++08-00                                                                          
+                                                                                
+         2          2          2 17-SEP-03                                      
++04-00                                                                          
+                                                                                
+         4          5          3 08-APR-23                                      
++25-11                                                                          
+                                                                                
+
+    NPOSTE       NLOG     NUMINS DATEINS                                        
+---------- ---------- ---------- ---------                                      
+DELAI                                                                           
+---------------------------------------------------------------------------     
+         6          6          4 20-MAY-03                                      
+                                                                                
+                                                                                
+         6          1          5 20-MAY-03                                      
++08-00                                                                          
+                                                                                
+         8          2          6 19-MAY-03                                      
++03-08                                                                          
+                                                                                
+
+    NPOSTE       NLOG     NUMINS DATEINS                                        
+---------- ---------- ---------- ---------                                      
+DELAI                                                                           
+---------------------------------------------------------------------------     
+         8          6          7 20-MAY-03                                      
+                                                                                
+                                                                                
+        11          3          8 20-APR-03                                      
++05-00                                                                          
+                                                                                
+        12          4          9 20-APR-03                                      
++05-11                                                                          
+                                                                                
+
+    NPOSTE       NLOG     NUMINS DATEINS                                        
+---------- ---------- ---------- ---------                                      
+DELAI                                                                           
+---------------------------------------------------------------------------     
+        11          7         10 20-APR-03                                      
++01-00                                                                          
+                                                                                
+         7          7         11 01-APR-02                                      
++00-00                                                                          
+                                                                                
+
+11 rows selected.
+
+SQL> SELECT * FROM  Types;
+
+TYPELP               NOMTYPE                                                    
+-------------------- ------------------------------                             
+TX                   Terminal X-Windows                                         
+UNIX                 Systeme UNIX                                               
+PCNT                 PC Windows NT                                              
+PCWS                 PC Windows                                                 
+NC                   Network Computer                                           
+
+SQL> spool off

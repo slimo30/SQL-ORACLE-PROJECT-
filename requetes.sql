@@ -66,9 +66,9 @@ SELECT typeLp
 FROM Types
 WHERE typeLp  IN ('UNIX', 'TX', 'PONS', 'PCNT') AND typeLp IN ('UNIX', 'TX', 'PCWS', 'PCNT','BeOS');
 --17
-SELECT typeLp
-FROM Types
-WHERE typeLp  IN ('UNIX', 'TX', 'PONS', 'PCNT') AND typeLp NOT IN ('UNIX', 'TX', 'PCWS', 'PCNT','BeOS');
+SELECT typePoste
+FROM Poste
+WHERE typePoste NOT IN ('UNIX', 'TX', 'PCWS', 'PCNT','BeOS');
 --18
 SELECT Poste.aIP 
 FROM Poste

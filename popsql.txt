@@ -1,0 +1,41 @@
+INSERT INTO Types VALUES('TX','Terminal X-Windows');
+INSERT INTO Types VALUES("UNIX","Systeme UNIX");
+INSERT INTO Types VALUES("PCNT","PC Windows NT");
+INSERT INTO Types VALUES("PCWS","PC Windows");
+INSERT INTO Types VALUES("NC","Network Computer");
+
+ CREATE TABLE MyTable (
+   id INT PRIMARY KEY,
+   duration INTERVAL YEAR TO MONTH
+);
+
+INSERT INTO MyTable (id, duration) VALUES (1, INTERVAL '3-6' );
+ 
+
+  UPDATE my_table 
+SET duration = (
+    EXTRACT(YEAR FROM end_date) - EXTRACT(YEAR FROM start_date)
+  ) * INTERVAL '1' YEAR 
+  + (
+    EXTRACT(MONTH FROM end_date) - EXTRACT(MONTH FROM start_date)
+  ) * INTERVAL '1' MONTH; 
+--tache 05
+
+UPDATE Segment
+SET etage = 
+    CASE nomSegement
+        WHEN '130.120.80' THEN 0
+        WHEN '130.120.81' THEN 1
+        WHEN '130.120.82' THEN 2
+        ELSE NULL
+    END;
+ 
+
+
+
+
+DROP TABLE Segment CASCADE CONSTRAINTS;
+DROP TABLE Salle CASCADE CONSTRAINTS;
+DROP TABLE Poste CASCADE CONSTRAINTS;
+DROP TABLE Logiciel CASCADE CONSTRAINTS;
+DROP TABLE Installer;
